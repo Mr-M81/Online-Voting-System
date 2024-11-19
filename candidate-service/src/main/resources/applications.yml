@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: candidate-service
+server:
+  port: 8083
+
+
