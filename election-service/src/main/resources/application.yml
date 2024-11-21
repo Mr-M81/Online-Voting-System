@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: election-service
+
+server:
+  port: 8082
+
+

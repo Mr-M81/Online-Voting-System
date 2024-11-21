@@ -1,2 +1,8 @@
-package gov.elections.candidateservice.service;public class CandidateService {
+package gov.elections.candidateservice.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CandidateService {
+
 }

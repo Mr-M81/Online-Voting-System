@@ -10,4 +10,6 @@ public interface UserService {
     ResponseEntity<Response> save(@NonNull final UserRequest userRequest);
 
     ResponseEntity<Response> update(@NonNull final UserRequest userRequest);
+
+    ResponseEntity<Response> read(@NonNull final String IdentificationNumber);
 }
