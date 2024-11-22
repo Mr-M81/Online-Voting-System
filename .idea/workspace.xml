@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5c047e19-4672-49f2-b7bc-cf7416d12d8a" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2oysiiO4d7WTCzucvWhQ557a989" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CandidateServiceApplication.executor": "Run",
+    "Application.ElectionServiceApplication.executor": "Run",
+    "Application.OnlineVotingSystemApplication.executor": "Run",
+    "Application.UserserviceApplication.executor": "Run",
+    "Maven.online-voting-system [clean].executor": "Run",
+    "Maven.online-voting-system [compile].executor": "Run",
+    "Maven.online-voting-system [install].executor": "Run",
+    "Maven.online-voting-system [org.springframework.boot:spring-boot-maven-plugin:3.3.5:run].executor": "Run",
+    "Maven.online-voting-system [package].executor": "Run",
+    "Maven.online-voting-system [test].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Some Java/VotingSystem/online-voting-system/src/main/java/gov/elections/onlinevotingsystem/electionservice",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Some Java\VotingSystem\online-voting-system\src\main\java\gov\elections\onlinevotingsystem\electionservice" />
+      <recent name="C:\Some Java\VotingSystem\online-voting-system\src\main\java\gov\elections\onlinevotingsystem\candidateservice" />
+      <recent name="C:\Some Java\VotingSystem\online-voting-system\src\main\resources" />
+      <recent name="C:\Some Java\VotingSystem\online-voting-system\src\main\java\gov\elections\onlinevotingsystem\userservice" />
+      <recent name="C:\Some Java\VotingSystem\online-voting-system\candidate-service\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="gov.elections.onlinevotingsystem.userservice.service.impl" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="gov.elections.onlinevotingsystem.system.controller" />
+      <recent name="gov.elections.onlinevotingsystem.system.dto" />
+      <recent name="gov.elections.onlinevotingsystem.system.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.OnlineVotingSystemApplication">
+    <configuration name="CandidateServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gov.elections.candidateservice.CandidateServiceApplication" />
+      <module name="candidate-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gov.elections.candidateservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ElectionServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gov.elections.electionservice.ElectionServiceApplication" />
+      <module name="election-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gov.elections.electionservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnlineVotingSystemApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gov.elections.onlinevotingsystem.OnlineVotingSystemApplication" />
+      <module name="online-voting-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gov.elections.onlinevotingsystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserserviceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gov.elections.userservice.UserserviceApplication" />
+      <module name="userservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gov.elections.userservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.OnlineVotingSystemApplication" />
+        <item itemvalue="Application.ElectionServiceApplication" />
+        <item itemvalue="Application.UserserviceApplication" />
+        <item itemvalue="Application.CandidateServiceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5c047e19-4672-49f2-b7bc-cf7416d12d8a" name="Changes" comment="" />
+      <created>1731853280042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731853280042</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
