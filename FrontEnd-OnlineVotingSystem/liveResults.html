@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Results</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="results">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Election Results</h2>
+                <p>Real-time updates of voting statistics and results</p>
+            </div>
+            <div class="results-container">
+                <!-- Dynamic candidate results will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBmOrgsNsS42G8xGiDVKKHyVA5DnSOnuK8",
+            authDomain: "onlinevotingsystem-db-3f625.firebaseapp.com",
+            projectId: "onlinevotingsystem-db-3f625",
+            storageBucket: "onlinevotingsystem-db-3f625.appspot.com",
+            messagingSenderId: "934330607631",
+            appId: "1:934330607631:web:166aaae86258e199a5db7a",
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Reference to the Firestore collection
+        const candidatesRef = collection(db, "candidates");
+
+        // DOM element where results will be displayed
+        const resultsContainer = document.querySelector(".results-container");
+
+        function getProgressBarClass(candidateNameAndParty) {
+            if (candidateNameAndParty.includes("Democratic Alliance")) return "progress-bar-DA";
+            if (candidateNameAndParty.includes("African National Progress")) return "progress-bar-ANC";
+            if (candidateNameAndParty.includes("Economic Freedom Fighters")) return "progress-bar-EFF";
+            if (candidateNameAndParty.includes("ActionSA")) return "progress-bar-ActionSA";
+            return "progress-bar-default"; // Fallback for unspecified parties
+        }
+
+        function renderResults(candidates) {
+        resultsContainer.innerHTML = ""; // Clear previous results
+        candidates.forEach(candidate => {
+        // Calculate percentage dynamically
+        const percentage = (candidate.voteCount / 100) * 100;
+        
+        // Get the progress bar class based on the candidate's party
+        const progressBarClass = getProgressBarClass(candidate.candidateNameAndParty);
+
+        const candidateElement = `
+            <div class="candidate-result">
+                <h3>${candidate.candidateNameAndParty}</h3>
+                <div class="progress">
+                    <div class="progress-bar ${progressBarClass}" style="width: ${percentage}%"></div>
+                </div>
+                <p>${percentage.toFixed(1)}% (${candidate.voteCount} votes)</p>
+            </div>
+        `;
+            resultsContainer.innerHTML += candidateElement;
+            });
+        }
+
+        // Listen for real-time updates
+        onSnapshot(candidatesRef, (snapshot) => {
+            const candidates = [];
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                // Ensure all required fields are present
+                if (data.candidateNameAndParty && data.voteCount >= 0) {
+                    candidates.push(data);
+                }
+            });
+
+            // Sort candidates by vote count descending
+            candidates.sort((a, b) => b.voteCount - a.voteCount);
+
+            // Render the updated results
+            renderResults(candidates);
+        });
+    </script>
+</body>
+</html>

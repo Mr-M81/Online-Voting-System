@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Online Voting Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="thumbnails\voting(1).gif" alt="Logo">
+                <h1>Online Voting Portal</h1>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="liveResults.html">Live Results</a></li>
+                    <li><a href="#register">Register</a></li>
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Your Voice Matters in Our Democracy</h2>
+                <p>Exercise your right to vote securely and conveniently through our state-of-the-art electronic voting system. Backed by advanced encryption and verified by independent security experts.</p>
+                <a href="#register" class="btn btn-primary">Register Today!</a>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Voting Process</h2>
+                    <p>Understanding how our secure electronic voting system works</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Step 1: Registration</h3>
+                        <p>Verify your identity using your government-issued ID and create your secure voting account</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Step 2: Authentication</h3>
+                        <p>Receive your unique voter ID and complete two-factor authentication</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Step 3: Voting</h3>
+                        <p>Cast your vote securely through our encrypted platform</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Step 4: Verification</h3>
+                        <p>Receive a confirmation receipt and track your anonymized vote</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="register">
+            <div class="container">
+                <div class="form">
+                    
+                    <div class="vote-form">
+                        <h2>Register to vote</h2>
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="registerEmail">ID</label>
+                                <input type="ID" id="Identification Number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerName">Full Name</label>
+                                <input type="text" id="registerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPassword">Password</label>
+                                <input type="password" id="registerPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerEmail">Email</label>
+                                <input type="email" id="registerEmail" required>
+                            </div>
+                            
+                            
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="login">
+            <div class="container">
+                <div class="form">
+                    <div class="vote-form">
+                        <h2>Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    </div>        
+                </div>
+            </div>
+        </section>
+
+    <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find answers to common questions about our online voting system</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How secure is the online voting system?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our system employs military-grade encryption and blockchain technology to ensure vote integrity. Multiple security layers include two-factor authentication, biometric verification, and real-time monitoring systems. All data is encrypted end-to-end and verified by independent security auditors.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What do I need to vote online?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To vote online, you need:</p>
+                            <ul>
+                                <li>Valid Voter ID Number</li>
+                                <li>National ID or Passport</li>
+                                <li>Access to your registered mobile phone for 2FA</li>
+                                <li>Internet connection</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I change my vote after submission?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, once a vote is submitted and confirmed, it cannot be changed. This ensures the integrity of the voting process and prevents multiple voting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2024 National Online Voting Portal - All Rights Reserved</p>
+            <p>For support, contact: <a href="mailto:support@votingportal.com">support@votingportal.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+         // FAQ Toggles
+         const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+                const icon = question.querySelector('i');
+                icon.classList.toggle('fa-chevron-up');
+                icon.classList.toggle('fa-chevron-down');
+            });
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+    
+            // Collect form data
+            const id = document.getElementById('Identification Number').value;
+            const name = document.getElementById('registerName').value;
+            const password = document.getElementById('registerPassword').value;
+            const email = document.getElementById('registerEmail').value;
+    
+            // Construct the payload
+            const userData = {
+                id: id,
+                name: name,
+                password: password,
+                email: email
+            };
+    
+            try {
+                // Send a POST request to the backend
+                const response = await fetch('http://localhost:8083/api/v1/users/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+    
+                // Handle the response
+                if (response.status == 201) {
+                    const result = await response.json();
+                    alert('Registration successful!');
+                    console.log('Server Response:', result);
+                    // Optionally redirect or clear the form
+                    window.location.href = '#login';
+                    this.reset;
+                } else {
+                    const error = await response.json();
+                    alert(`Registration failed: ${error.message || 'Unknown error'}`);
+                    console.error('Error Response:', error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during registration. Please try again.');
+            }
+        });
+        //login form
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Collect form data
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // Construct the payload
+    const loginRequest = {
+        email: email,
+        password: password
+    };
+
+    try {
+        // Send a POST request to the backend
+        const response = await fetch('http://localhost:8083/api/v1/users/read', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginRequest)
+        });
+
+        // Handle the response
+        if (response.ok) {
+            const result = await response.json();
+            if (result.status === "SUCCESSFUL") {
+                alert(`Welcome back, ${result.data.name}!`);
+                console.log('Server Response:', result);
+
+                // Redirect or perform another action
+                window.location.href = 'home.html';
+            } else {
+                alert(`Login failed: ${result.message}`);
+                console.error('Error Response:', result);
+            }
+        } else {
+            const error = await response.json();
+            alert(`Login failed: ${error.message || 'Unknown error'}`);
+            console.error('Error Response:', error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred during login. Please try again.');
+    }
+});
+    </script>
+</body>
+</html>

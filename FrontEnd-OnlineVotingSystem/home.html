@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Online Voting Portal - Secure Democracy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a4b8c;
+            --secondary-color: #e63946;
+            --accent-color: #457b9d;
+            --light-bg: #f1faee;
+            --dark-text: #1d3557;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Navigation Styles */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(225, 121, 9, 0.8), rgba(26, 75, 140, 0.9)),
+                        url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 1rem 4rem;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c1121f;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Voting Form */
+        .vote-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            right: -10px;
+            top: 15px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Results Section */
+        .results-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .candidate-result {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar-ANC {
+            background: yellow;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-EFF {
+            background: red;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-DA {
+            background: blue;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-ActionSA {
+            background: green;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            background: white;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary-color);
+                transition: 0.3s ease;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <!--
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="Voting Portal Logo">
+                <h1>National eVoting Portal</h1>
+            </div>
+            -->
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#vote">Vote</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Your Voice Matters in Our Democracy</h2>
+            <p>Exercise your right to vote securely and conveniently through our state-of-the-art electronic voting system. Backed by advanced encryption and verified by independent security experts.</p>
+            <a href="#vote" class="btn btn-primary">Cast Your Vote Now</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Secure Digital Democracy</h2>
+                <p>Leading the way in modern, accessible, and secure voting solutions</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Military-Grade Security</h3>
+                    <p>End-to-end encryption ensures your vote remains confidential and tamper-proof</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-universal-access"></i>
+                    <h3>Accessibility</h3>
+                    <p>Vote from anywhere, anytime, with support for multiple languages and accessibility tools</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Instant Results</h3>
+                    <p>Real-time vote counting with multiple verification layers</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-check-double"></i>
+                    <h3>Verification System</h3>
+                    <p>Multiple authentication steps ensure only eligible voters can participate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!DOCTYPE html>
+
+
+    <section id="vote">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cast Your Vote</h2>
+                <p>Follow the steps below to submit your ballot securely</p>
+            </div>
+            <div class = "vote-form">
+                <form id="voteForm">
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" required placeholder="Enter your Email Address for verification">
+                    </div>
+                    <div class="form-group">
+                        <label for="candidates">Select Your Candidate:</label>
+                        <select id="candidates" name="candidates" required>
+                            <option value="">Choose your candidate</option>
+                            <option value="1">1. Cyril Ramaphosa - African National Congress</option>
+                            <option value="2">2. John Steenhuisen - Democratic Alliance</option>
+                            <option value="3">3. Julius Malema - Economic Freedom Fighters</option>
+                            <option value="4">4. Michael Beaumont - ActionSA</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Ballot</button>
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="results">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Election Results</h2>
+                <p>Real-time updates of voting statistics and results</p>
+            </div>
+            <div class="results-container">
+                <!-- Dynamic candidate results will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>A Frequently Asked Question</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I change my vote after submission?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, once a vote is submitted and confirmed, it cannot be changed. This ensures the integrity of the voting process and prevents multiple voting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Support</h2>
+                <p>Need assistance? Our support team is here to help</p>
+            </div>
+            <div class="vote-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <select id="subject" required>
+                            <option value="" disabled selected>Select issue type</option>
+                            <option value="technical">Technical Issue</option>
+                            <option value="registration">Registration Problem</option>
+                            <option value="voting">Voting Assistance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" rows="5" required placeholder="Describe your issue"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#vote">Vote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Voter Guide</a></li>
+                        <li><a href="#">Security Measures</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Helpline: 1-800-VOTE</li>
+                        <li><i class="fas fa-envelope"></i> support@evoting.gov</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Democracy Ave</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 National eVoting Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        // Hamburger Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+// Toggle menu on hamburger click
+hamburger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    hamburger.classList.toggle('active');
+});
+
+// Close menu when a navigation link is clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        hamburger.classList.remove('active');
+    });
+});
+
+
+        // FAQ Toggles
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+                const icon = question.querySelector('i');
+                icon.classList.toggle('fa-chevron-up');
+                icon.classList.toggle('fa-chevron-down');
+            });
+        });
+
+        // vote form!
+        document.getElementById('voteForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Get form elements with validation
+    const candidateSelect = document.getElementById('candidates');
+    const email = document.getElementById('email').value.trim();
+    
+    // Validate all required fields
+    if (!email || !candidateSelect.value) {
+        alert('Please fill in all required fields');
+        return;
+    }
+
+    // Parse candidate number
+    const candidateNo = Number(candidateSelect.value);
+    
+    // Validate candidate number
+    if (isNaN(candidateNo) || candidateNo < 1 || candidateNo > 4) {
+        alert('Invalid candidate selection');
+        return;
+    }
+
+    try {
+        // Fixed the parameter name from 'emailAdress' to 'email'
+        const response = await fetch(`http://localhost:8083/api/v1/vote/vote?email=${encodeURIComponent(email)}&candidateNo=${candidateNo}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                candidateNo: candidateNo
+            })
+        });
+
+        console.log('Response status:', response.status);
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Success response:', result);
+            
+            if (result.status === 'SUCCESSFUL') {
+                alert('Vote successfully recorded! Thank you for participating in the democratic process.');
+                this.reset();
+                candidateSelect.value = ""; // Reset select element
+            } else {
+                alert(result.message || 'Your vote could not be processed.');
+            }
+        } else {
+            const errorData = await response.json().catch(() => ({}));
+            console.error('Error response:', errorData);
+            alert(errorData.message || 'An error occurred while submitting your vote.');
+        }
+    } catch (error) {
+        console.error('Fetch error:', error);
+        alert('Unable to submit your vote at this time. Please try again later.');
+    }
+});
+
+// Keep the validation for candidate selection
+document.getElementById('candidates').addEventListener('change', function() {
+    if (!this.value) {
+        this.setCustomValidity('Please select a candidate');
+    } else {
+        this.setCustomValidity('');
+    }
+});
+
+
+    </script>
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBmOrgsNsS42G8xGiDVKKHyVA5DnSOnuK8",
+            authDomain: "onlinevotingsystem-db-3f625.firebaseapp.com",
+            projectId: "onlinevotingsystem-db-3f625",
+            storageBucket: "onlinevotingsystem-db-3f625.appspot.com",
+            messagingSenderId: "934330607631",
+            appId: "1:934330607631:web:166aaae86258e199a5db7a",
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Reference to the Firestore collection
+        const candidatesRef = collection(db, "candidates");
+
+        // DOM element where results will be displayed
+        const resultsContainer = document.querySelector(".results-container");
+
+        function getProgressBarClass(candidateNameAndParty) {
+            if (candidateNameAndParty.includes("Democratic Alliance")) return "progress-bar-DA";
+            if (candidateNameAndParty.includes("African National Progress")) return "progress-bar-ANC";
+            if (candidateNameAndParty.includes("Economic Freedom Fighters")) return "progress-bar-EFF";
+            if (candidateNameAndParty.includes("ActionSA")) return "progress-bar-ActionSA";
+            return "progress-bar-default"; // Fallback for unspecified parties
+        }
+
+        function renderResults(candidates) {
+        resultsContainer.innerHTML = ""; // Clear previous results
+        candidates.forEach(candidate => {
+        // Calculate percentage dynamically
+        const percentage = (candidate.voteCount / 100) * 100;
+        
+        // Get the progress bar class based on the candidate's party
+        const progressBarClass = getProgressBarClass(candidate.candidateNameAndParty);
+
+        const candidateElement = `
+            <div class="candidate-result">
+                <h3>${candidate.candidateNameAndParty}</h3>
+                <div class="progress">
+                    <div class="progress-bar ${progressBarClass}" style="width: ${percentage}%"></div>
+                </div>
+                <p>${percentage.toFixed(1)}% (${candidate.voteCount} votes)</p>
+            </div>
+        `;
+            resultsContainer.innerHTML += candidateElement;
+            });
+        }
+
+        // Listen for real-time updates
+        onSnapshot(candidatesRef, (snapshot) => {
+            const candidates = [];
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                // Ensure all required fields are present
+                if (data.candidateNameAndParty && data.voteCount >= 0) {
+                    candidates.push(data);
+                }
+            });
+
+            // Sort candidates by vote count descending
+            candidates.sort((a, b) => b.voteCount - a.voteCount);
+
+            // Render the updated results
+            renderResults(candidates);
+        });
+    </script>
+</body>
+</html>
